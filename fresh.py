@@ -106,7 +106,7 @@ def perform_lookup(server, domain, timeout=3, tries=1):
     # try (tries) times
     for _ in range(0, tries):
         try:
-            answer = dns_resolver.query(domain)
+            answer = dns_resolver.resolve(domain)
             return [r.to_text() for r in answer]
         except (DNSException, ValueError) as e:
             pass
